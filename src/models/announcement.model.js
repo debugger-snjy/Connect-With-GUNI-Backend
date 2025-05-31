@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Defining the Schema for the Fees
 const AnnouncementSchema = new mongoose.Schema({

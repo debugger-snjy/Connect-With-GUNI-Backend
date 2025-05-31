@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Defining the Schema for the Timetable
 const TimetableSchema = new mongoose.Schema({

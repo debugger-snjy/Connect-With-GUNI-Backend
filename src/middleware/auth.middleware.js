@@ -1,10 +1,11 @@
-const jwt = require("jsonwebtoken");
+import pkg from 'jsonwebtoken';
+const { verify } = pkg;
 
 // Importing the dotenv for JWT_SECRET_KEY access
-const dotenv = require('dotenv');
+import { config } from 'dotenv';
 
 // Getting the Environment Variables from the env file
-dotenv.config();
+config();
 
 // Function to fetch user id from the token which is present in headers
 const fetchUser = (req, res, next) => {
@@ -21,7 +22,7 @@ const fetchUser = (req, res, next) => {
     // Then we check for whether the token is correct or not
     try {
 
-        const data = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        const data = verify(token, process.env.JWT_SECRET_KEY);
         req.user = data.user;
 
         next();
@@ -34,4 +35,4 @@ const fetchUser = (req, res, next) => {
 
 }
 
-module.exports = fetchUser;
+export { fetchUser };

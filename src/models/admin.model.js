@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Defining the Schema for the Admin
 const AdminSchema = new mongoose.Schema({
@@ -39,4 +39,4 @@ const AdminSchema = new mongoose.Schema({
 const Admin = mongoose.model("admin", AdminSchema);
 // Admin.createIndexes() // used to create indexes and don't save duplicates records
 // To avoid creating 2 indexes, we will remove this and we will verfiy the duplicate Admin in the code itself (auth.js)
-module.exports = Admin;
+export default Admin;

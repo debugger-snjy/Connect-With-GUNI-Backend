@@ -7,7 +7,8 @@ import cookieParser from "cookie-parser";
 // Importing the cors
 import cors from "cors";
 
-import {APIResponse} from "./utils/apiResponse.js"
+import { APIResponse } from "./utils/apiResponse.js"
+import authRouter from "./routes/auth.routes.js";
 
 // Creating an Express application
 const app = express();
@@ -43,6 +44,8 @@ app.use(express.static("public"))
 // --------------------------------------------------------------------------------------------------------------------
 // Routes
 
+app.use("/api/v1/user", authRouter);
+
 // Adding the Heath or Live Status Route
 app.get("/api/v1/connect-with-guni", (req, res) => {
     return res
@@ -54,10 +57,6 @@ app.get("/api/v1/connect-with-guni", (req, res) => {
         )
 })
 
-// // Listening to the port
-// app.listen(process.env.PORT, () => {
-//     console.log(`ConnectWithGUNI app listening on port ${process.env.PORT}`)
-// })
 
 // Exporting the app in default format - i.e, no need to use object destructuring while importing
 export default app;

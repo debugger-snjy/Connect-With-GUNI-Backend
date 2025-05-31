@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Defining the Schema for the Marksheet
 const MarksheetSchema = new mongoose.Schema({

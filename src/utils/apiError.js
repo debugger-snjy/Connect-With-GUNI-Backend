@@ -1,8 +1,9 @@
 // API Error Class Extending the Node JS Error Class
-class APIError{
+class APIError {
 
     // Constructor
-    constructor(statusCode = 400, message = "Something Went Wrong") {
+    // 'errors' parameter is used to pass additional error details for debugging or frontend display
+    constructor(statusCode = 400, message = "Something Went Wrong", errors = null) {
 
         // Status Code that we want to set for the Error
         this.statusCode = statusCode;
@@ -15,6 +16,8 @@ class APIError{
 
         // This is a variable for frontend to check whether the api is hit successfully or not
         this.success = false;
+
+        this.errors = errors;
     }
 
     // Created the Class Method to Send the Error Response

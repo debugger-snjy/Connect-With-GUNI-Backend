@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Defining the Schema for the Student
 const StudentSchema = new mongoose.Schema({
@@ -58,4 +58,4 @@ const StudentSchema = new mongoose.Schema({
 const Student = mongoose.model("student", StudentSchema);
 // Student.createIndexes() // used to create indexes and don't save duplicates records
 // To avoid creating 2 indexes, we will remove this and we will verfiy the duplicate student in the code itself (auth.js)
-module.exports = Student;
+export default Student;
