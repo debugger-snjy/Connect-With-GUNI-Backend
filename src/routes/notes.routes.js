@@ -16,7 +16,7 @@ notesRouter.get('/fetchallnotes', fetchUser, fetchAllNotes)
 
 // Route 2 : Adding Notes in the database using POST Request "/addnote"
 // Here, Login is Required ==> Middleware needed
-notesRouter.post('/addnote', fetchUser, [
+notesRouter.post('/add', fetchUser, [
     body("title", "Title can't be Empty !").exists(),
     body("description", "Description can't be Empty !").exists(),
     body("description", "Description can't be Empty !").isLength({ min: 5 })
@@ -25,7 +25,7 @@ notesRouter.post('/addnote', fetchUser, [
 // Route 3 : Updating an existing Note in the database using PUT Request "/updatenote"
 // Here, Login is Required ==> Middleware needed
 // Also, the user could update his/her note only so for that we have to check for the user as well
-notesRouter.put('/updatenote/:id', fetchUser, [
+notesRouter.put('/update/:id', fetchUser, [
     body("title", "Title can't be Empty !").notEmpty(),
     body("description", "Description can't be Empty !").notEmpty(),
     body("description", "Description should have minimum of 5 Letters !").isLength({ min: 5 })
@@ -34,6 +34,6 @@ notesRouter.put('/updatenote/:id', fetchUser, [
 // Route 4 : Deleting an existing Note in the database using DELETE Request "/deletenote"
 // Here, Login is Required ==> Middleware needed
 // Also, the user could delete his/her note only so for that we have to check for the user as well
-notesRouter.delete('/deletenote/:id', fetchUser, deleteNote);
+notesRouter.delete('/delete/:id', fetchUser, deleteNote);
 
 export default notesRouter;
