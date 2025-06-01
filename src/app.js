@@ -9,6 +9,7 @@ import cors from "cors";
 
 import { APIResponse } from "./utils/apiResponse.js"
 import authRouter from "./routes/auth.routes.js";
+import notesRouter from "./routes/notes.routes.js";
 
 // Creating an Express application
 const app = express();
@@ -45,6 +46,7 @@ app.use(express.static("public"))
 // Routes
 
 app.use("/api/v1/user", authRouter);
+app.use("/api/v1/notes", notesRouter);
 
 // Adding the Heath or Live Status Route
 app.get("/api/v1/connect-with-guni", (req, res) => {

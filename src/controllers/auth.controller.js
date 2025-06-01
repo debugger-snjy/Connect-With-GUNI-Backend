@@ -117,7 +117,7 @@ const loginUser = asyncPromiseHandler(async (req, res) => {
         return res
             .status(200)
             .cookie("authToken", authToken, cookieOptions)
-            .json(new APIResponse(200, { status: status, msg: msg, authToken }, "User Logged In Successfully"))
+            .json(new APIResponse(200, { msg: msg, authToken }, "User Logged In Successfully"))
 
     }
     catch (error) {
