@@ -34,6 +34,7 @@ import jwt from "jsonwebtoken";
 import { loginUser, getUser } from '../controllers/auth.controller.js';
 
 // Route 1 : Authenticate a user using POST Request. No Login Required
+// Full Route : /api/v1/auth/login
 // We are using POST as we are dealing with the passwords
 authRouter.post('/login', [
     // exists() ==> Used to check that the field shoul not be undefined
@@ -47,6 +48,7 @@ authRouter.post('/login', [
 
 
 // Route 2 : Get Details of Loggedin User using POST Request. Login Required
+// Full Route : /api/v1/auth/getuser
 // For that one, thing is neccessary that the user should be logined in
 // For that, we need the AuthToken to verfiy
 

@@ -13,8 +13,8 @@ import {
 const feesRouter = Router();
 
 // For Uploading Fees - POST Request
-// Full Route : /api/admin/upload/fees/
-feesRouter.post('/upload/fees/', [
+// Full Route : /api/v1/fees/upload/
+feesRouter.post('/upload/', [
     // Checking whether the field is available or not !!
     body("id", "Your Id is Required").exists(),
     body("date", "Your Date is Required").exists(),
@@ -27,24 +27,24 @@ feesRouter.post('/upload/fees/', [
 ], uploadFees);
 
 // For Fetching Fees - GET Request
-// Full Route : /api/admin/fetch/fees/:id
-feesRouter.get('/fetch/fees/:id', fetchFeesById);
+// Full Route : /api/v1/fees/fetch/:id
+feesRouter.get('/fetch/:id', fetchFeesById);
 
 // For Fetching All Fees - GET Request
-// Full Route : /api/admin/fetch/fees/all
-feesRouter.get('/fetch/allfees', fetchAllFees);
+// Full Route : /api/v1/fees/fetch/all
+feesRouter.get('/fetch/all', fetchAllFees);
+
+// For Fetching Fees By Semester and Enrollment - GET Request
+// Full Route : /api/v1/fees/fetch/sem/:sem/enroll/:enroll
+feesRouter.get('/fetch/sem/:sem/enroll/:enroll', fetchFeesBySemAndEnroll);
 
 // For Fetching Fees By Semester - GET Request
-// Full Route : /api/admin/fetch/fees/sem/:sem
-feesRouter.get('/fetch/fees/sem/:sem', fetchFeesBySem);
-
-// For Fetching Fees By Semester - GET Request
-// Full Route : /api/admin/fetch/fees/sem/:sem/enroll/:enroll
-feesRouter.get('/fetch/fees/sem/:sem/enroll/:enroll', fetchFeesBySemAndEnroll);
+// Full Route : /api/v1/fees/fetch/sem/:sem
+feesRouter.get('/fetch/sem/:sem', fetchFeesBySem);
 
 // For Updating Fees - PUT Request
-// Full Route : /api/admin/update/fees/:feesId
-feesRouter.put('/update/fees/:feesId', [
+// Full Route : /api/v1/fees/update/:feesId
+feesRouter.put('/update/:feesId', [
     // Checking whether the field is available or not !!
     body("date", "Your Date is Required").exists(),
     body("mode", "Your Mode is Required").exists(),
@@ -56,7 +56,7 @@ feesRouter.put('/update/fees/:feesId', [
 ], updateFees);
 
 // For Deleting Fees - DELETE Request
-// Full Route : /api/admin/delete/fees/:feesId
-feesRouter.delete('/delete/fees/:feesId', deleteFees);
+// Full Route : /api/v1/fees/delete/:feesId
+feesRouter.delete('/delete/:feesId', deleteFees);
 
 export default feesRouter;

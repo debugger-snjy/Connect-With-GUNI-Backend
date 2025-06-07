@@ -7,13 +7,9 @@ const attendanceRouter = Router();
 const AttendanceStorage = multer.memoryStorage();
 const attendance_upload = multer({ storage: AttendanceStorage });
 
-// ===========================================================================================================================================================================
-// ----- ATTENDANCE ROUTES ---------- ATTENDANCE ROUTES ---------- ATTENDANCE ROUTES ---------- ATTENDANCE ROUTES ---------- ATTENDANCE ROUTES ---------- ATTENDANCE ROUTES --
-// ===========================================================================================================================================================================
-
 // For Uploading Attendance - POST Request
-// Full Route : /api/admin/attendance/upload
-attendanceRouter.post('/attendance/upload', attendance_upload.single('file'), [
+// Full Route : /api/v1/attendance/upload
+attendanceRouter.post('/upload', attendance_upload.single('file'), [
     // Checking whether the field is available or not !!
     body("sem", "Your Semester is Missing").exists(),
     body("subject", "Your Subject is Missing").exists(),
@@ -22,7 +18,7 @@ attendanceRouter.post('/attendance/upload', attendance_upload.single('file'), [
 ], uploadAttendance);
 
 // For Fetching Attendance - GET Request
-// Full Route : /api/admin/attendance/fetch
-attendanceRouter.get('/attendance/fetch', fetchAllAttendance);
+// Full Route : /api/v1/attendance/fetch
+attendanceRouter.get('/fetch', fetchAllAttendance);
 
 export default attendanceRouter;

@@ -14,7 +14,8 @@ const material_upload = multer({ storage: MaterialStorage });
 const materialRouter = Router();
 
 // For Uploading the Material :
-materialRouter.post('/materials/upload', material_upload.single('file'), [
+// Full Route : /api/v1/material/upload
+materialRouter.post('/upload', material_upload.single('file'), [
     // Checking whether the field is available or not !!
     body("sem", "Your Semester is Missing").exists(),
     body("subject", "Your Subject is Missing").exists(),
@@ -22,13 +23,15 @@ materialRouter.post('/materials/upload', material_upload.single('file'), [
 ], uploadMaterial);
 
 // For Fetching All Materials - GET Request
-materialRouter.get('/fetch/allmaterials', fetchAllMaterials);
+// Full Route : /api/v1/material/fetch/all
+materialRouter.get('/fetch/all', fetchAllMaterials);
 
 // For Deleting Material - DELETE Request
-materialRouter.delete('/delete/material/:materialid', deleteMaterial);
+// Full Route : /api/v1/material/delete/:materialid
+materialRouter.delete('/delete/:materialid', deleteMaterial);
 
 // For Fetching Subject Material Files - POST Request
-// Full Route : /pai/student/fetch/material/:subjectname
-materialRouter.post('/fetch/material/:subjectname', fetchSubjectMaterial);
+// Full Route : /api/v1/material/fetch/subject/:subjectname
+materialRouter.post('/fetch/subject/:subjectname', fetchSubjectMaterial);
 
 export default materialRouter;

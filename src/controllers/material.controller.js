@@ -6,7 +6,7 @@ import { deleteCloudinaryFile, uploadOnCloudinaryFromBuffer } from "../utils/clo
 import { getFileTypeFromExtension } from "../utils/fileType.js";
 
 // For Uploading the Material
-export const uploadMaterial = async (req, res) => {
+const uploadMaterial = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Material NOT Uploaded Successfully";
 
@@ -72,7 +72,7 @@ export const uploadMaterial = async (req, res) => {
 }
 
 // For Fetching All Materials - GET Request
-export const fetchAllMaterials = async (req, res) => {
+const fetchAllMaterials = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "All Materials has NOT Fetched Successfully";
 
@@ -95,7 +95,7 @@ export const fetchAllMaterials = async (req, res) => {
 }
 
 // For Deleting Material - DELETE Request
-export const deleteMaterial = async (req, res) => {
+const deleteMaterial = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Material has NOT Deleted Successfully";
 
@@ -136,7 +136,7 @@ export const deleteMaterial = async (req, res) => {
 
 // For Fetching Subject Material Files - POST Request
 // Full Route : /pai/student/fetch/material/:subjectname
-export const fetchSubjectMaterial = async (req, res) => {
+const fetchSubjectMaterial = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Subject Material has NOT Fetched Successfully";
 
@@ -159,4 +159,11 @@ export const fetchSubjectMaterial = async (req, res) => {
         console.error("Error : ", error.message)
         return res.status(500).json(new APIError(500, msg, error.message));
     }
+}
+
+export {
+    uploadMaterial,
+    fetchAllMaterials,
+    deleteMaterial,
+    fetchSubjectMaterial
 }

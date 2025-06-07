@@ -5,7 +5,7 @@ import { APIResponse } from "../utils/apiResponse.js";
 
 // For Uploading Timetable - POST Request
 // Full Route : /api/admin/upload/timetable
-export const uploadTimetable = async (req, res) => {
+const uploadTimetable = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Timetable NOT Updated Successfully";
 
@@ -54,7 +54,7 @@ export const uploadTimetable = async (req, res) => {
 
 // For Fetching Timetable - POST Request
 // Full Route : /api/admin/fetch/timetable
-export const fetchTimetable = async (req, res) => {
+const fetchTimetable = async (req, res) => {
     let msg = "Timetable has NOT Fetched Successfully";
     try {
         // Finding all the Fees 
@@ -77,7 +77,7 @@ export const fetchTimetable = async (req, res) => {
 
 // For Fetching All Timetables - GET Request
 // Full Route : /api/admin/fetch/alltimetables
-export const fetchAllTimetables = async (req, res) => {
+const fetchAllTimetables = async (req, res) => {
     let msg = "Timetable has NOT Fetched Successfully";
     try {
         // Finding all the Fees 
@@ -100,7 +100,7 @@ export const fetchAllTimetables = async (req, res) => {
 
 // For Updating Timetable - PUT Request
 // Full Route : /api/admin/edit/timetable/:timetableId
-export const updateTimetable = async (req, res) => {
+const updateTimetable = async (req, res) => {
     let msg = "Timetable NOT Updated Successfully";
     try {
         // Getting the Results after validations
@@ -162,7 +162,7 @@ export const updateTimetable = async (req, res) => {
 
 // For Deleting Timetable - DELETE Request
 // Full Route : /api/admin/delete/timetable/:timetableId
-export const deleteTimetable = async (req, res) => {
+const deleteTimetable = async (req, res) => {
     let msg = "Timetable has NOT Deleted Successfully";
     try {
         // Finding the subject from the database, whether the subject exists or not
@@ -188,4 +188,13 @@ export const deleteTimetable = async (req, res) => {
         msg = "Timetable Not Deleted Successfully"
         return res.status(500).json(new APIError(500, msg, error.message));
     }
+}
+
+
+export {
+    uploadTimetable,
+    fetchTimetable,
+    fetchAllTimetables,
+    updateTimetable,
+    deleteTimetable
 }

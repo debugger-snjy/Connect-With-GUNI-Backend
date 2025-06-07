@@ -4,7 +4,7 @@ import { APIError } from "../utils/apiError.js";
 import { APIResponse } from "../utils/apiResponse.js";
 
 // For Uploading Announcement - POST Request
-export const uploadAnnouncement = async (req, res) => {
+const uploadAnnouncement = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Announcement has NOT Uploaded Successfully";
 
@@ -57,7 +57,7 @@ export const uploadAnnouncement = async (req, res) => {
 
 // For Fetching All Announcement - GET Request
 // Full Route : /api/admin/fetch/announcement/all
-export const fetchAllAnnouncements = async (req, res) => {
+const fetchAllAnnouncements = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "All Announcements has NOT Fetched Successfully";
 
@@ -82,7 +82,7 @@ export const fetchAllAnnouncements = async (req, res) => {
 
 // For Fetching Announcement By Semester - GET Request
 // Full Route : /api/admin/fetch/announcement/sem/:sem
-export const fetchAnnouncementsBySemDivBatch = async (req, res) => {
+const fetchAnnouncementsBySemDivBatch = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "All Semester Announcements has NOT Fetched Successfully";
 
@@ -113,7 +113,7 @@ export const fetchAnnouncementsBySemDivBatch = async (req, res) => {
 
 // For Fetching Announcement By Announcer - GET Request
 // Full Route : /api/admin/fetch/announcement/:announcedBy
-export const fetchAnnouncementsByAnnouncer = async (req, res) => {
+const fetchAnnouncementsByAnnouncer = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "All Announcements has NOT Fetched Successfully";
 
@@ -138,7 +138,7 @@ export const fetchAnnouncementsByAnnouncer = async (req, res) => {
 
 // For Updating Announcement - PUT Request
 // Full Route : /api/admin/update/announcement/:announcementId
-export const updateAnnouncement = async (req, res) => {
+const updateAnnouncement = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Announcement has NOT Uploaded Successfully";
 
@@ -210,7 +210,7 @@ export const updateAnnouncement = async (req, res) => {
 
 // For Deleting Announcement - DELETE Request
 // Full Route : /api/admin/delete/announcement/:announcementId
-export const deleteAnnouncement = async (req, res) => {
+const deleteAnnouncement = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Announcement NOT Deleted Successfully";
 
@@ -244,4 +244,14 @@ export const deleteAnnouncement = async (req, res) => {
         msg = "Announcement Record Not Updated"
         return res.status(500).json(new APIError(500, msg, error.message));
     }
+}
+
+
+export {
+    uploadAnnouncement,
+    fetchAllAnnouncements,
+    fetchAnnouncementsBySemDivBatch,
+    fetchAnnouncementsByAnnouncer,
+    updateAnnouncement,
+    deleteAnnouncement
 }

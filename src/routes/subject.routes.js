@@ -1,4 +1,3 @@
-
 // Importing the express Package
 import { Router } from 'express';
 
@@ -10,7 +9,7 @@ import { body } from 'express-validator';
 import { addSubject, fetchAllSubjects, fetchAllSemSubjects, deleteSubject, updateSubject, fetchSubjectById } from '../controllers/subject.controller.js';
 
 // For Adding Subject - POST Request
-// Full Route : /api/admin/add/subject
+// Full Route : /api/v1/subject/add
 subjectRouter.post('/add', [
 
     // Checking whether the field is available or not !!
@@ -25,23 +24,23 @@ subjectRouter.post('/add', [
 ], addSubject);
 
 // For Fetching All Subjects - GET Request
-// Full Route : /api/admin/fetch/allsubjects
-subjectRouter.get('/fetch/allsubjects', fetchAllSubjects);
+// Full Route : /api/v1/subject/fetch/all
+subjectRouter.get('/fetch/all', fetchAllSubjects);
 
-// For Fetching Subject - GET Request
-// Full Route : /api/admin/fetch/allsemsubjects/:sem
-subjectRouter.get('/fetch/allsemsubjects/:sem', fetchAllSemSubjects);
+// For Fetching Subject by Semester - GET Request
+// Full Route : /api/v1/subject/fetch/sem/:sem
+subjectRouter.get('/fetch/sem/:sem', fetchAllSemSubjects);
 
-// For Fetching Subject - GET Request
-// Full Route : /api/admin/fetch/subject/:id
+// For Fetching Subject by ID - GET Request
+// Full Route : /api/v1/subject/fetch/:id
 subjectRouter.get('/fetch/:id', fetchSubjectById);
 
 // For Deleting Subject - DEL Request
-// Full Route : /api/admin/delete/subject/:id
+// Full Route : /api/v1/subject/delete/:id
 subjectRouter.delete('/delete/:id', deleteSubject)
 
 // For Updating Subject - PUT Request
-// Full Route : /api/admin/update/subject/:id
+// Full Route : /api/v1/subject/update/:id
 subjectRouter.put('/update/:id', [
 
     // Checking whether the field is available or not !!

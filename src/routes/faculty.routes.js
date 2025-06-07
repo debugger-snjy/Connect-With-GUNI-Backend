@@ -8,7 +8,7 @@ const facultyRouter = Router();
 
 // Add Faculty Operation
 // For Adding Faculty - POST Request
-// Full Route : /api/admin/add/faculty
+// Full Route : /api/v1/faculty/add
 facultyRouter.post('/add', [
 
     // Checking whether the field is available or not !!
@@ -31,24 +31,24 @@ facultyRouter.post('/add', [
 
 ], addFaculty);
 
-// For Fetching Faculty - GET Request
-// Full Route : /api/admin/fetch/departmentfaculty
-facultyRouter.get('/fetch/departmentfaculty/:dept',fetchDepartmentfaculty);
+// For Fetching Faculty by Department - GET Request
+// Full Route : /api/v1/faculty/fetch/department/:dept
+facultyRouter.get('/fetch/department/:dept', fetchDepartmentfaculty);
 
-// For Fetching Faculty - GET Request
-// Full Route : /api/admin/fetch/allfaculties
-facultyRouter.get('/fetch/allfaculties',fetchAllfaculties);
+// For Fetching All Faculties - GET Request
+// Full Route : /api/v1/faculty/fetch/all
+facultyRouter.get('/fetch/all', fetchAllfaculties);
 
-// For Fetching Faculty - GET Request
-// Full Route : /api/admin/fetch/faculty/:id
-facultyRouter.get('/fetch/:id',fetchFaculty);
+// For Fetching Faculty by ID - GET Request
+// Full Route : /api/v1/faculty/fetch/:id
+facultyRouter.get('/fetch/:id', fetchFaculty);
 
-// For Deleting Student - DEL Request
-// Full Route : /api/admin/delete/student/:id
-facultyRouter.delete('/delete/:id',deleteFaculty);
+// For Deleting Faculty - DEL Request
+// Full Route : /api/v1/faculty/delete/:id
+facultyRouter.delete('/delete/:id', deleteFaculty);
 
-// For Adding Faculty - POST Request
-// Full Route : /api/admin/add/faculty
+// For Updating Faculty - PUT Request
+// Full Route : /api/v1/faculty/update/:id
 facultyRouter.put('/update/:id', [
 
     // Checking whether the field is available or not !!
@@ -67,7 +67,7 @@ facultyRouter.put('/update/:id', [
     body("phone", "Phone Number should of 10 digits").isLength({ min: 10, max: 10 }),
     body("email", "Email ID is Invalid").isEmail(),
 
-],updateFaculty);
+], updateFaculty);
 
 // Exporting the Router
 export default facultyRouter;

@@ -11,10 +11,8 @@ import {
 const timetableRouter = Router();
 
 // For Updating Subject - PUT Request
-// Full Route : /api/admin/upload/timetable
-
-// TODO : Remaining !
-timetableRouter.post('/upload/timetable', [
+// Full Route : /api/v1/timetable/upload
+timetableRouter.post('/upload', [
     // Checking whether the field is available or not !!
     body("sem", "Your Sem is Required").exists(),
     body("batch", "Your Batch is Required").exists(),
@@ -23,7 +21,9 @@ timetableRouter.post('/upload/timetable', [
     // Checking other paramaters
 ], uploadTimetable);
 
-timetableRouter.post('/fetch/timetable', [
+// For Fetching Timetable - POST Request
+// Full Route : /api/v1/timetable/fetch
+timetableRouter.post('/fetch', [
     // Checking whether the field is available or not !!
     body("sem", "Your Sem is Required").exists(),
     body("division", "Your Division is Required").exists(),
@@ -31,13 +31,19 @@ timetableRouter.post('/fetch/timetable', [
     // Checking other paramaters
 ], fetchTimetable);
 
-timetableRouter.get('/fetch/alltimetables', fetchAllTimetables);
+// For Fetching All Timetables - GET Request
+// Full Route : /api/v1/timetable/fetch/all
+timetableRouter.get('/fetch/all', fetchAllTimetables);
 
-timetableRouter.put('/edit/timetable/:timetableId', [
+// For Updating Timetable - PUT Request
+// Full Route : /api/v1/timetable/update/:timetableId
+timetableRouter.put('/update/:timetableId', [
     // Checking whether the field is available or not !!
     // Add validation if needed
 ], updateTimetable);
 
-timetableRouter.delete("/delete/timetable/:timetableId", deleteTimetable);
+// For Deleting Timetable - DELETE Request
+// Full Route : /api/v1/timetable/delete/:timetableId
+timetableRouter.delete("/delete/:timetableId", deleteTimetable);
 
 export default timetableRouter;

@@ -19,7 +19,7 @@ import {
 } from '../controllers/student.controller.js';
 
 // For Adding Student - POST Request
-// Full Route : /api/admin/add/student
+// Full Route : /api/v1/student/add
 studentRouter.post('/add', [
 
     // Checking whether the field is available or not !!
@@ -43,28 +43,28 @@ studentRouter.post('/add', [
 
 // ! NOTE : Make Sure to add the parameter route at the end of the route list
 
-// For Fetching All Semester Student - GET Request
-// Full Route : /api/admin/fetch/allsemstudent/:sem
-studentRouter.get('/fetch/allsemstudent/:sem', fetchStudentBySem);
-
 // For Fetching All Class Student - GET Request
-// Full Route : /api/admin/fetch/allclassstudent/:class
+// Full Route : /api/v1/student/fetch/sem/:sem/division/:division
 studentRouter.get('/fetch/sem/:sem/division/:division', fetchStudentByDivision);
 
+// For Fetching All Semester Student - GET Request
+// Full Route : /api/v1/student/fetch/sem/:sem
+studentRouter.get('/fetch/sem/:sem', fetchStudentBySem);
+
 // For Fetching All Students - GET Request
-// Full Route : /api/admin/fetch/allstudents
-studentRouter.get('/fetch/allstudents', fetchAllStudents);
+// Full Route : /api/v1/student/fetch/all
+studentRouter.get('/fetch/all', fetchAllStudents);
 
 // For Fetching Student - GET Request
-// Full Route : /api/admin/fetch/student/:id
+// Full Route : /api/v1/student/fetch/:id
 studentRouter.get('/fetch/:id', fetchStudentById);
 
 // For Deleting Student - DEL Request
-// Full Route : /api/admin/delete/student/:id
+// Full Route : /api/v1/student/delete/:id
 studentRouter.delete('/delete/:id', deleteStudent)
 
 // For Updating Student - PUT Request
-// Full Route : /api/admin/update/student/:id
+// Full Route : /api/v1/student/update/:id
 studentRouter.put('/update/:id', updateStudent)
 
 // Exporting the Router Object

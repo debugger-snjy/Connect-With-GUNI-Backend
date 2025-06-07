@@ -11,7 +11,9 @@ import {
 
 const announcementRouter = Router();
 
-announcementRouter.post('/upload/announcement/', [
+// For Uploading Announcement - POST Request
+// Full Route : /api/v1/announcement/upload/
+announcementRouter.post('/upload/', [
     // Checking whether the field is available or not !!
     body("title", "Your Title is Required").exists(),
     body("description", "Your Description is Required").exists(),
@@ -23,20 +25,20 @@ announcementRouter.post('/upload/announcement/', [
 ], uploadAnnouncement);
 
 // For Fetching All Announcement - GET Request
-// Full Route : /api/admin/fetch/announcement/all
-announcementRouter.get('/fetch/allannouncement', fetchAllAnnouncements);
+// Full Route : /api/v1/announcement/fetch/all
+announcementRouter.get('/fetch/all', fetchAllAnnouncements);
 
 // For Fetching Announcement By Semester - GET Request
-// Full Route : /api/admin/fetch/announcement/sem/:sem
-announcementRouter.get('/fetch/announcement/sem/:sem/div/:div/batch/:batch', fetchAnnouncementsBySemDivBatch);
+// Full Route : /api/v1/announcement/fetch/sem/:sem/div/:div/batch/:batch
+announcementRouter.get('/fetch/sem/:sem/div/:div/batch/:batch', fetchAnnouncementsBySemDivBatch);
 
 // For Fetching Announcement By Announcer - GET Request
-// Full Route : /api/admin/fetch/announcement/:announcedBy
-announcementRouter.get('/fetch/announcement/:announcedBy', fetchAnnouncementsByAnnouncer);
+// Full Route : /api/v1/announcement/fetch/announcer/:announcedBy
+announcementRouter.get('/fetch/announcer/:announcedBy', fetchAnnouncementsByAnnouncer);
 
 // For Updating Announcement - PUT Request
-// Full Route : /api/admin/update/announcement/:announcementId
-announcementRouter.put('/update/announcement/:announcementId', [
+// Full Route : /api/v1/announcement/update/:announcementId
+announcementRouter.put('/update/:announcementId', [
     // Checking whether the field is available or not !!
     body("title", "Your Title is Required").exists(),
     body("description", "Your Description is Required").exists(),
@@ -48,7 +50,7 @@ announcementRouter.put('/update/announcement/:announcementId', [
 ], updateAnnouncement);
 
 // For Deleting Announcement - DELETE Request
-// Full Route : /api/admin/delete/announcement/:announcementId
-announcementRouter.delete('/delete/announcement/:announcementId', deleteAnnouncement);
+// Full Route : /api/v1/announcement/delete/:announcementId
+announcementRouter.delete('/delete/:announcementId', deleteAnnouncement);
 
 export default announcementRouter;

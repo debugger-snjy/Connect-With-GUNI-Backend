@@ -5,7 +5,7 @@ import { APIResponse } from "../utils/apiResponse.js";
 
 // For Adding Recent Accessed - POST Request
 // Full Route : /api/admin/recentaccessed/add
-export const addRecentAccessed = async (req, res) => {
+const addRecentAccessed = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "";
 
@@ -81,7 +81,7 @@ export const addRecentAccessed = async (req, res) => {
 
 // For Fetching Recent Accessed - POST Request
 // Full Route : /api/admin/recentaccessed/fetch
-export const fetchRecentAccessed = async (req, res) => {
+const fetchRecentAccessed = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "";
 
@@ -121,4 +121,9 @@ export const fetchRecentAccessed = async (req, res) => {
         msg = "Recent Accessed NOT Fetched Successfully"
         return res.status(500).json(new APIError(500, msg, error.message));
     }
+}
+
+export {
+    addRecentAccessed,
+    fetchRecentAccessed
 }

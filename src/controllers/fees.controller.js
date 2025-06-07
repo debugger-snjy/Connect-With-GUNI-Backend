@@ -6,7 +6,7 @@ import { MongoClient } from "mongodb";
 
 // For Uploading Fees - POST Request
 // Full Route : /api/admin/upload/fees/
-export const uploadFees = async (req, res) => {
+const uploadFees = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Fees Record has NOT Uploaded Successfully";
 
@@ -63,7 +63,7 @@ export const uploadFees = async (req, res) => {
 
 // For Fetching Fees - GET Request
 // Full Route : /api/admin/fetch/fees/:id
-export const fetchFeesById = async (req, res) => {
+const fetchFeesById = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Fees Record has NOT Fetched Successfully";
 
@@ -88,14 +88,14 @@ export const fetchFeesById = async (req, res) => {
 
 // For Fetching All Fees - GET Request
 // Full Route : /api/admin/fetch/fees/all
-export const fetchAllFees = async (req, res) => {
+const fetchAllFees = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "All Fees Records has NOT Fetched Successfully";
 
     console.log("Fetching the Fees")
 
     try {
-        
+
         // Using the lean() function to get plain JavaScript objects instead of Mongoose documents
         // This can improve performance for read operations
         const allFees = await Fees.find({}).lean();
@@ -117,7 +117,7 @@ export const fetchAllFees = async (req, res) => {
 
 // For Fetching Fees By Semester - GET Request
 // Full Route : /api/admin/fetch/fees/sem/:sem
-export const fetchFeesBySem = async (req, res) => {
+const fetchFeesBySem = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "All Semester Fees Records has NOT Fetched Successfully";
 
@@ -142,7 +142,7 @@ export const fetchFeesBySem = async (req, res) => {
 
 // For Fetching Fees By Semester and Enrollment - GET Request
 // Full Route : /api/admin/fetch/fees/sem/:sem/enroll/:enroll
-export const fetchFeesBySemAndEnroll = async (req, res) => {
+const fetchFeesBySemAndEnroll = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "All Fees Receipts of Student has NOT Fetched Successfully";
 
@@ -172,7 +172,7 @@ export const fetchFeesBySemAndEnroll = async (req, res) => {
 
 // For Updating Fees - PUT Request
 // Full Route : /api/admin/update/fees/:feesId
-export const updateFees = async (req, res) => {
+const updateFees = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Fees Record has NOT Uploaded Successfully";
 
@@ -232,7 +232,7 @@ export const updateFees = async (req, res) => {
 
 // For Deleting Fees - DELETE Request
 // Full Route : /api/admin/delete/fees/:feesId
-export const deleteFees = async (req, res) => {
+const deleteFees = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Fees Record NOT Deleted Successfully";
 
@@ -266,4 +266,14 @@ export const deleteFees = async (req, res) => {
         msg = "Fees Record Not Deleted"
         return res.status(500).json(new APIError(500, msg, error.message));
     }
+}
+
+export {
+    uploadFees,
+    fetchFeesById,
+    fetchAllFees,
+    fetchFeesBySem,
+    fetchFeesBySemAndEnroll,
+    updateFees,
+    deleteFees
 }

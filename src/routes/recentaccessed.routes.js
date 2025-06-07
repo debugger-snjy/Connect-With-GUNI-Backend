@@ -6,15 +6,15 @@ import fetchUser from "../middlewares/fetchUser.js";
 const recentAccessedRouter = Router();
 
 // For Adding Announcement - POST Request
-// Full Route : /api/admin/recentaccessed/add
-recentAccessedRouter.post('/recentaccessed/add', fetchUser, [
+// Full Route : /api/v1/recentaccessed/add
+recentAccessedRouter.post('/add', fetchUser, [
     body("link", "Link can't be Empty !").exists(),
     body("description", "Description can't be Empty !").exists(),
     body("timestamp", "Timestamp can't be Empty !").exists()
 ], addRecentAccessed);
 
 // For Fetching Recent Accessed - POST Request
-// Full Route : /api/admin/recentaccessed/fetch
-recentAccessedRouter.post('/recentaccessed/fetch', fetchUser, fetchRecentAccessed);
+// Full Route : /api/v1/recentaccessed/fetch
+recentAccessedRouter.post('/fetch', fetchUser, fetchRecentAccessed);
 
 export default recentAccessedRouter;

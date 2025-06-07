@@ -13,8 +13,8 @@ import {
 const marksheetRouter = Router();
 
 // For Uploading Marksheet - POST Request
-// Full Route : /api/admin/upload/marksheet/
-marksheetRouter.post('/upload/marksheet/', [
+// Full Route : /api/v1/marksheet/upload
+marksheetRouter.post('/upload', [
     // Checking whether the field is available or not !!
     body("date", "Your Date is Required").exists(),
     body("sem", "Your Sem is Required").exists(),
@@ -25,31 +25,31 @@ marksheetRouter.post('/upload/marksheet/', [
     // Checking other paramaters
 ], uploadMarksheet);
 
-// For Fetching Marksheet - GET Request
-// Full Route : /api/admin/fetch/marksheet/:id
-marksheetRouter.get('/fetch/marksheet/:id', fetchMarksheetById);
-
 // For Fetching All Marksheet - GET Request
-// Full Route : /api/admin/fetch/marksheet/all
-marksheetRouter.get('/fetch/allmarksheet', fetchAllMarksheet);
-
-// For Fetching Marksheet By Semester - GET Request
-// Full Route : /api/admin/fetch/marksheet/sem/:sem
-marksheetRouter.get('/fetch/marksheet/sem/:sem', fetchMarksheetBySem);
+// Full Route : /api/v1/marksheet/fetch/all
+marksheetRouter.get('/fetch/all', fetchAllMarksheet);
 
 // For Fetching Marksheet By Semester and Enroll - GET Request
-// Full Route : /api/admin/fetch/marksheet/sem/:sem/enroll/:enroll
-marksheetRouter.get('/fetch/marksheet/sem/:sem/enroll/:enroll', fetchMarksheetBySemAndEnroll);
+// Full Route : /api/v1/marksheet/fetch/sem/:sem/enroll/:enroll
+marksheetRouter.get('/fetch/sem/:sem/enroll/:enroll', fetchMarksheetBySemAndEnroll);
+
+// For Fetching Marksheet By Semester - GET Request
+// Full Route : /api/v1/marksheet/fetch/sem/:sem
+marksheetRouter.get('/fetch/sem/:sem', fetchMarksheetBySem);
+
+// For Fetching Marksheet By ID - GET Request
+// Full Route : /api/v1/marksheet/fetch/:id
+marksheetRouter.get('/fetch/:id', fetchMarksheetById);
 
 // For Updating Marksheet - PUT Request
-// Full Route : /api/admin/update/marksheet/:marksheetId
-marksheetRouter.put('/update/marksheet/:marksheetId', [
+// Full Route : /api/v1/marksheet/update/:marksheetId
+marksheetRouter.put('/update/:marksheetId', [
     // Checking whether the field is available or not !!
     // Checking other paramaters
 ], updateMarksheet);
 
 // For Deleting Marksheet - DELETE Request
-// Full Route : /api/admin/delete/marksheet/:marksheetId
-marksheetRouter.delete('/delete/marksheet/:marksheetId', deleteMarksheet);
+// Full Route : /api/v1/marksheet/delete/:marksheetId
+marksheetRouter.delete('/delete/:marksheetId', deleteMarksheet);
 
 export default marksheetRouter;

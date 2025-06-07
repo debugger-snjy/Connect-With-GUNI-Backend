@@ -9,7 +9,7 @@ import { uploadOnCloudinaryFromBuffer } from "../utils/cloudinary.js";
 
 // For Uploading Attendance - POST Request
 // Full Route : /api/admin/attendance/upload
-export const uploadAttendance = async (req, res) => {
+const uploadAttendance = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "Attendance NOT Uploaded Successfully";
 
@@ -298,7 +298,7 @@ export const uploadAttendance = async (req, res) => {
 
 // For Fetching Attendance - GET Request
 // Full Route : /api/admin/attendance/fetch
-export const fetchAllAttendance = async (req, res) => {
+const fetchAllAttendance = async (req, res) => {
     // Making a Variable to track the success or not
     let msg = "All Attendance Records has NOT Fetched Successfully";
 
@@ -332,3 +332,5 @@ function isExcelFile(filename) {
 function isAlphaString(str) {
     return /^[a-zA-Z\s]+$/.test(str);
 }
+
+export { uploadAttendance, fetchAllAttendance };

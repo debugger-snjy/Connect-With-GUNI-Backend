@@ -1,4 +1,3 @@
-
 // Importing the express Package
 import { Router } from 'express';
 
@@ -10,30 +9,28 @@ import { body } from 'express-validator';
 import { fetchAllNotes, addNote, deleteNote, updateNote } from '../controllers/notes.controller.js';
 import { fetchUser } from '../middleware/auth.middleware.js';
 
-// Route 1 : Fetching all the Notes of the User using GET Request "/fetchallnotes"
-// Here, Login is Required ==> Middleware needed
-notesRouter.get('/fetchallnotes', fetchUser, fetchAllNotes)
+// For Fetching all the Notes of the User - GET Request (Login Required)
+// Full Route : /api/v1/notes/fetch/all
+notesRouter.get('/fetch/all', fetchUser, fetchAllNotes)
 
-// Route 2 : Adding Notes in the database using POST Request "/addnote"
-// Here, Login is Required ==> Middleware needed
+// For Adding Notes in the database - POST Request (Login Required)
+// Full Route : /api/v1/notes/add
 notesRouter.post('/add', fetchUser, [
     body("title", "Title can't be Empty !").exists(),
     body("description", "Description can't be Empty !").exists(),
     body("description", "Description can't be Empty !").isLength({ min: 5 })
 ], addNote)
 
-// Route 3 : Updating an existing Note in the database using PUT Request "/updatenote"
-// Here, Login is Required ==> Middleware needed
-// Also, the user could update his/her note only so for that we have to check for the user as well
+// For Updating an existing Note - PUT Request (Login Required)
+// Full Route : /api/v1/notes/update/:id
 notesRouter.put('/update/:id', fetchUser, [
     body("title", "Title can't be Empty !").notEmpty(),
     body("description", "Description can't be Empty !").notEmpty(),
     body("description", "Description should have minimum of 5 Letters !").isLength({ min: 5 })
 ], updateNote)
 
-// Route 4 : Deleting an existing Note in the database using DELETE Request "/deletenote"
-// Here, Login is Required ==> Middleware needed
-// Also, the user could delete his/her note only so for that we have to check for the user as well
+// For Deleting an existing Note - DELETE Request (Login Required)
+// Full Route : /api/v1/notes/delete/:id
 notesRouter.delete('/delete/:id', fetchUser, deleteNote);
 
 export default notesRouter;
