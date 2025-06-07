@@ -30,4 +30,5 @@ const AttendanceSchema = new mongoose.Schema({
 
 // Exporting the model: 
 // model takes a name and the schema
-module.exports = mongoose.model("attendances", AttendanceSchema);
+const Attendance = mongoose.model("attendances", AttendanceSchema);
+export default Attendance;

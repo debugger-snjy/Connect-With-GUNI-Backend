@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body } from "express-validator";
-import { addAdmin, deleteAdmin, fetchAdmin, fetchAllAdmin, updateAdmin } from "../controllers/admin.controller";
+import { addAdmin, deleteAdmin, fetchAdmin, fetchAllAdmin, updateAdmin } from "../controllers/admin.controller.js";
 
 const adminRouter = Router();
 

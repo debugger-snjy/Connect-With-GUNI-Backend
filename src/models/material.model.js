@@ -34,4 +34,6 @@ const MaterialSchema = new mongoose.Schema({
 
 // Exporting the model: 
 // model takes a name and the schema
-module.exports = mongoose.model("materials", MaterialSchema);
+const Material = mongoose.model("materials", MaterialSchema);
+
+export default Material;

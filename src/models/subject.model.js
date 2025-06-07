@@ -35,4 +35,4 @@ const SubjectSchema = new mongoose.Schema({
 const Subject = mongoose.model("subject", SubjectSchema);
 // Subject.createIndexes() // used to create indexes and don't save duplicates records
 // To avoid creating 2 indexes, we will remove this and we will verfiy the duplicate Subject in the code itself (auth.js)
-module.exports = Subject;
+export default Subject;

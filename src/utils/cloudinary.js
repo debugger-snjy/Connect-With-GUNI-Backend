@@ -1,17 +1,18 @@
 // Importing the Cloudinary for accessing the cloudinary Services
-//import { v2 as cloudinary } from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 
-const cloudinary = require("cloudinary").v2;
+// const cloudinary = require("cloudinary").v2;
 
 // Importing the File System - from node (No Need to Import)
-//import fs from 'fs';
-const fs = require("fs");
-const { Readable } = require('stream');
+import fs from 'fs';
+// const fs = require("fs");
+// const { Readable } = require('stream');
+import { Readable } from "stream";
 
-// import { APIError } from "./apiError.js";
+import { APIError } from "./apiError.js";
 
-//import dotenv from 'dotenv';
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
+// const dotenv = require('dotenv');
 
 dotenv.config({
     path: "../../.env"
@@ -140,7 +141,7 @@ const uploadOnCloudinaryFromBuffer = async (fileBuffer, folder) => {
 };
 
 // Exporting the Cloudinary Function
-module.exports = {
+export {
     uploadOnCloudinaryFromLocal,
     deleteCloudinaryFile,
     uploadOnCloudinaryFromBuffer

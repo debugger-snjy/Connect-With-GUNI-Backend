@@ -1,6 +1,6 @@
-import asyncPromiseHandler from "utils/asyncPromiseHandler.js";
+import { asyncPromiseHandler } from "../utils/asyncPromiseHandler.js";
 import { validationResult } from "express-validator";
-import Admin from "models/admin.model.js";
+import Admin from "../models/admin.model.js";
 import { APIError } from "../utils/apiError.js";
 import { APIResponse } from "../utils/apiResponse.js";
 

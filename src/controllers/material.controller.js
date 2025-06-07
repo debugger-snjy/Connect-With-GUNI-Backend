@@ -3,7 +3,7 @@ import Material from "../models/material.model.js";
 import { APIError } from "../utils/apiError.js";
 import { APIResponse } from "../utils/apiResponse.js";
 import { deleteCloudinaryFile, uploadOnCloudinaryFromBuffer } from "../utils/cloudinary.js";
-import { getFileTypeFromExtension } from "../utils/fileType.js";
+import { getFileTypeFromExtension } from "../utils/helper.js";
 
 // For Uploading the Material
 const uploadMaterial = async (req, res) => {

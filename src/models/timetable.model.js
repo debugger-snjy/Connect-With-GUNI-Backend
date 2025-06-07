@@ -30,4 +30,4 @@ const TimetableSchema = new mongoose.Schema({
 const Timetable = mongoose.model("timetable", TimetableSchema);
 // Timetable.createIndexes() // used to create indexes and don't save duplicates records
 // To avoid creating 2 indexes, we will remove this and we will verfiy the duplicate Timetable in the code itself (auth.js)
-module.exports = Timetable;
+export default Timetable;

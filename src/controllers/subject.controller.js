@@ -2,7 +2,7 @@ import Subjects from "../models/subject.model.js";
 import { validationResult } from "express-validator";
 import { APIError } from "../utils/apiError.js";
 import { APIResponse } from "../utils/apiResponse.js";
-import asyncPromiseHandler from "../middlewares/asyncPromiseHandler.js";
+import { asyncPromiseHandler } from "../utils/asyncPromiseHandler.js";
 
 // For Adding Subject - POST Request
 // Full Route : /api/admin/add/subject

@@ -17,4 +17,5 @@ const RecentAccessedSchema = new mongoose.Schema({
 
 // Exporting the model: 
 // model takes a name and the schema
-module.exports = mongoose.model("recentAccessed", RecentAccessedSchema);
+const RecentAccessed = mongoose.model("recentAccessed", RecentAccessedSchema);
+export default RecentAccessed;

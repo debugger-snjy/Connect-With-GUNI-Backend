@@ -48,4 +48,4 @@ const AnnouncementSchema = new mongoose.Schema({
 const Announcement = mongoose.model("announcements", AnnouncementSchema);
 // Announcement.createIndexes() // used to create indexes and don't save duplicates records
 // To avoid creating 2 indexes, we will remove this and we will verfiy the duplicate Fees in the code itself (auth.js)
-module.exports = Announcement;
+export default Announcement;

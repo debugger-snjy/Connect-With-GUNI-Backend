@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { body, validationResult } from "express-validator";
 import { addRecentAccessed, fetchRecentAccessed } from "../controllers/recentaccessed.controller.js";
-import fetchUser from "../middlewares/fetchUser.js";
+import { fetchUser } from "../middleware/auth.middleware.js";
 
 const recentAccessedRouter = Router();
 

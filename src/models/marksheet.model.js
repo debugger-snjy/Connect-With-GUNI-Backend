@@ -34,4 +34,4 @@ const MarksheetSchema = new mongoose.Schema({
 const Marksheet = mongoose.model("marksheet", MarksheetSchema);
 // Marksheet.createIndexes() // used to create indexes and don't save duplicates records
 // To avoid creating 2 indexes, we will remove this and we will verfiy the duplicate Marksheet in the code itself (auth.js)
-module.exports = Marksheet;
+export default Marksheet;
