@@ -14,6 +14,7 @@ import notesRouter from "./routes/notes.routes.js";
 import studentRouter from "./routes/student.routes.js";
 import facultyRouter from "./routes/faculty.routes.js";
 import subjectRouter from "./routes/subject.routes.js";
+import adminRouter from "./routes/admin.routes.js";
 
 // Creating an Express application
 const app = express();
@@ -54,6 +55,7 @@ app.use("/api/v1/notes", notesRouter);
 app.use("/api/v1/student", studentRouter);
 app.use("/api/v1/faculty", facultyRouter);
 app.use("/api/v1/subject", subjectRouter);
+app.use("/api/v1/admin", adminRouter);
 
 // Adding the Heath or Live Status Route
 app.get("/api/v1/connect-with-guni", (req, res) => {
@@ -64,8 +66,7 @@ app.get("/api/v1/connect-with-guni", (req, res) => {
                 server: "OK"
             }, "All Things are Looking Good !!")
         )
-})
-
+});
 
 // Exporting the app in default format - i.e, no need to use object destructuring while importing
 export default app;
