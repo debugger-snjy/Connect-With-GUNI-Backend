@@ -8,7 +8,6 @@ import { MongoClient } from "mongodb";
 // Full Route : /api/admin/upload/marksheet/
 const uploadMarksheet = async (req, res) => {
     // Making a Variable to track the success or not
-    let status = "failed";
     let msg = "Marksheet has NOT Uploaded Successfully";
 
     try {
@@ -18,7 +17,6 @@ const uploadMarksheet = async (req, res) => {
         // If we have errors, sending bad request with errors
         if (!errors.isEmpty()) {
             // Setting up the parameters
-            status = "failed";
             msg = "Marksheet has NOT Uploaded Successfully"
             // sending the errors that are present
             return res.status(400).json(new APIError(400, msg, errors.array()));
@@ -51,7 +49,6 @@ const uploadMarksheet = async (req, res) => {
             // Save the Marksheet document to the database
             if (marksheetRecord) {
                 // Setting up the parameters
-                status = "success";
                 msg = "Marksheet has been Uploaded Successfully"
                 // Finding all the Students 
                 console.log(newMarksheet)
@@ -60,7 +57,6 @@ const uploadMarksheet = async (req, res) => {
             return res.json(new APIResponse(200, newMarksheet, msg));
         }
         else {
-            status = "failed";
             msg = "Marksheet already Exists !";
             return res.status(409).json(new APIError(409, msg));
         }
@@ -70,7 +66,6 @@ const uploadMarksheet = async (req, res) => {
         console.log("Error Occured !")
         console.error("Error : ", error.message)
         // Setting up the parameters
-        status = "failed";
         msg = "Marksheet has Not Uploaded Successfully"
         return res.status(500).json(new APIError(500, msg, error.message))
     }
@@ -80,7 +75,6 @@ const uploadMarksheet = async (req, res) => {
 // Full Route : /api/admin/fetch/marksheet/:id
 const fetchMarksheetById = async (req, res) => {
     // Making a Variable to track the success or not
-    let status = "failed";
     let msg = "Marksheet has NOT Fetched Successfully";
 
     try {
@@ -89,7 +83,6 @@ const fetchMarksheetById = async (req, res) => {
 
         if (marksheetData.length !== 0) {
             // Setting up the parameters
-            status = "success";
             msg = "Marksheet has been Fetched Successfully"
             // Printing all the marksheet Data
             console.log(marksheetData)
@@ -107,7 +100,6 @@ const fetchMarksheetById = async (req, res) => {
 // Full Route : /api/admin/fetch/marksheet/all
 const fetchAllMarksheet = async (req, res) => {
     // Making a Variable to track the success or not
-    let status = "failed";
     let msg = "All Marksheets has NOT Fetched Successfully";
 
     try {
@@ -127,7 +119,6 @@ const fetchAllMarksheet = async (req, res) => {
 
         if (allMarksheet.length !== 0) {
             // Setting up the parameters
-            status = "success";
             msg = "All Marksheets has been Fetched Successfully"
             // Finding all the Marksheets
             console.log(allMarksheet)
@@ -145,7 +136,6 @@ const fetchAllMarksheet = async (req, res) => {
 // Full Route : /api/admin/fetch/marksheet/sem/:sem
 const fetchMarksheetBySem = async (req, res) => {
     // Making a Variable to track the success or not
-    let status = "failed";
     let msg = "All Semester Marksheets has NOT Fetched Successfully";
 
     try {
@@ -154,7 +144,6 @@ const fetchMarksheetBySem = async (req, res) => {
 
         if (allSemMarksheet.length !== 0) {
             // Setting up the parameters
-            status = "success";
             msg = "All Semester Marksheets has been Fetched Successfully"
             // Finding all the Marksheet 
             console.log(allSemMarksheet)
@@ -172,7 +161,6 @@ const fetchMarksheetBySem = async (req, res) => {
 // Full Route : /api/admin/fetch/marksheet/sem/:sem/enroll/:enroll
 const fetchMarksheetBySemAndEnroll = async (req, res) => {
     // Making a Variable to track the success or not
-    let status = "failed";
     let msg = "All Semester Marksheets has NOT Fetched Successfully";
 
     try {
@@ -186,7 +174,6 @@ const fetchMarksheetBySemAndEnroll = async (req, res) => {
 
         if (allSemMarksheet.length !== 0) {
             // Setting up the parameters
-            status = "success";
             msg = "All Semester Marksheets has been Fetched Successfully"
             // Finding all the Marksheet 
             console.log(allSemMarksheet)
@@ -204,7 +191,6 @@ const fetchMarksheetBySemAndEnroll = async (req, res) => {
 // Full Route : /api/admin/update/marksheet/:marksheetId
 const updateMarksheet = async (req, res) => {
     // Making a Variable to track the success or not
-    let status = "failed";
     let msg = "Marksheet has NOT Uploaded Successfully";
 
     try {
@@ -214,7 +200,6 @@ const updateMarksheet = async (req, res) => {
         // If we have errors, sending bad request with errors
         if (!errors.isEmpty()) {
             // Setting up the parameters
-            status = "failed";
             msg = "Marksheet NOT Uploaded Successfully"
             // sending the errors that are present
             return res.status(400).json(new APIError(400, msg, errors.array()));
@@ -246,13 +231,11 @@ const updateMarksheet = async (req, res) => {
             if (updatedMarksheetData) {
                 // console.log("Done")
                 // Setting up the parameters
-                status = "success";
                 msg = "Marksheet has been Updated Successfully"
             }
             else {
                 // console.log("Not Done")
                 // Setting up the parameters
-                status = "failed";
                 msg = "Marksheet has NOT Updated Successfully"
             }
 
@@ -262,7 +245,6 @@ const updateMarksheet = async (req, res) => {
         else {
             console.log("Record NOT Found")
             // Setting up the parameters
-            status = "failed";
             msg = "Marksheet has NOT Found"
         }
 
@@ -272,7 +254,6 @@ const updateMarksheet = async (req, res) => {
         console.log("Error Occured !")
         console.error("Error : ", error.message)
         // Setting up the parameters
-        status = "failed";
         msg = "Marksheet Not Updated"
         return res.status(500).json(new APIError(500, msg, error.message))
     }
@@ -282,7 +263,6 @@ const updateMarksheet = async (req, res) => {
 // Full Route : /api/admin/delete/marksheet/:marksheetId
 const deleteMarksheet = async (req, res) => {
     // Making a Variable to track the success or not
-    let status = "failed";
     let msg = "Marksheet NOT Deleted Successfully";
 
     try {
@@ -292,7 +272,6 @@ const deleteMarksheet = async (req, res) => {
         // If we have errors, sending bad request with errors
         if (!errors.isEmpty()) {
             // Setting up the parameters
-            status = "failed";
             msg = "Marksheet NOT Uploaded Successfully"
             // sending the errors that are present
             return res.status(400).json(new APIError(400, msg, errors.array()));
@@ -301,11 +280,9 @@ const deleteMarksheet = async (req, res) => {
         const marksheetRecord = await Marksheet.findOneAndDelete({ _id: req.params.marksheetId })
 
         if (marksheetRecord) {
-            status = "success";
             msg = "Marksheet has been Deleted Successfully";
         }
         else {
-            status = "failed";
             msg = "Marksheet has NOT Deleted Successfully";
         }
 
@@ -315,7 +292,6 @@ const deleteMarksheet = async (req, res) => {
         console.log("Error Occured !")
         console.error("Error : ", error.message)
         // Setting up the parameters
-        status = "failed";
         msg = "Marksheet Record Not Updated"
         return res.status(500).json(new APIError(500, msg, error.message))
     }
