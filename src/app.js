@@ -19,6 +19,7 @@ import announcementRouter from "./routes/announcement.routes.js";
 import feesRouter from "./routes/fees.routes.js";
 import marksheetRouter from "./routes/marksheet.routes.js";
 import recentAccessedRouter from "./routes/recentAccessed.routes.js";
+import timetableRouter from "./routes/timetable.routes.js";
 
 // Creating an Express application
 const app = express();
@@ -64,6 +65,7 @@ app.use("/api/v1/announcement", announcementRouter);
 app.use("/api/v1/fees", feesRouter);
 app.use("/api/v1/marksheet", marksheetRouter);
 app.use("/api/v1/recentaccess", recentAccessedRouter);
+app.use("/api/v1/timetable", timetableRouter);
 
 // Adding the Heath or Live Status Route
 app.get("/api/v1/connect-with-guni", (req, res) => {
