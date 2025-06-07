@@ -21,6 +21,7 @@ import marksheetRouter from "./routes/marksheet.routes.js";
 import recentAccessedRouter from "./routes/recentaccessed.routes.js";
 import timetableRouter from "./routes/timetable.routes.js";
 import materialRouter from "./routes/material.routes.js";
+import attendanceRouter from "./routes/attendance.routes.js";
 
 // Creating an Express application
 const app = express();
@@ -68,6 +69,7 @@ app.use("/api/v1/marksheet", marksheetRouter);
 app.use("/api/v1/recentaccess", recentAccessedRouter);
 app.use("/api/v1/timetable", timetableRouter);
 app.use("/api/v1/material", materialRouter);
+app.use("/api/v1/attendance", attendanceRouter);
 
 // Adding the Heath or Live Status Route
 app.get("/api/v1/connect-with-guni", (req, res) => {
