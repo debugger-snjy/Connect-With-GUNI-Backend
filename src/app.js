@@ -16,6 +16,7 @@ import facultyRouter from "./routes/faculty.routes.js";
 import subjectRouter from "./routes/subject.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import announcementRouter from "./routes/announcement.routes.js";
+import feesRouter from "./routes/fees.routes.js";
 
 // Creating an Express application
 const app = express();
@@ -58,6 +59,7 @@ app.use("/api/v1/faculty", facultyRouter);
 app.use("/api/v1/subject", subjectRouter);
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/announcement", announcementRouter);
+app.use("/api/v1/fees", feesRouter);
 
 // Adding the Heath or Live Status Route
 app.get("/api/v1/connect-with-guni", (req, res) => {
