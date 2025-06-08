@@ -26,13 +26,13 @@ feesRouter.post('/upload/', [
     // Checking other paramaters
 ], uploadFees);
 
-// For Fetching Fees - GET Request
-// Full Route : /api/v1/fees/fetch/:id
-feesRouter.get('/fetch/:id', fetchFeesById);
-
 // For Fetching All Fees - GET Request
 // Full Route : /api/v1/fees/fetch/all
 feesRouter.get('/fetch/all', fetchAllFees);
+
+// For Fetching Fees - GET Request
+// Full Route : /api/v1/fees/fetch/:id
+feesRouter.get('/fetch/:id', fetchFeesById);
 
 // For Fetching Fees By Semester and Enrollment - GET Request
 // Full Route : /api/v1/fees/fetch/sem/:sem/enroll/:enroll

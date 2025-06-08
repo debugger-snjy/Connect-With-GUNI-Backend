@@ -31,7 +31,12 @@ const addSubject = asyncPromiseHandler(async (req, res, next) => {
 
         faculties = faculties.split(",")
 
-        const findSubject = await Subjects.find({ subjectCode })
+        const findSubject = await Subjects.find({
+            $or: [
+                { subjectCode },
+                { subjectShortForm },
+            ]
+        })
 
         if (findSubject.length == 0) {
             // Create a new subject document
@@ -58,7 +63,7 @@ const addSubject = asyncPromiseHandler(async (req, res, next) => {
 
         }
         else {
-            msg = "Subject is Already Exists";
+            msg = "Subject or Subject Short Form is Already Exists";
             return res.status(409).json(new APIError(409, msg));
         }
 
@@ -231,7 +236,7 @@ const updateSubject = asyncPromiseHandler(async (req, res, next) => {
         }
 
         // If no errors are present or found
-        const { sem, subjectName, subjectCode, subjectShortForm, subjectLectures } = req.body;
+        const { sem, subjectName, subjectCode, subjectShortForm, subjectLectures, faculties } = req.body;
 
         // Create a newSubject Object with the new Updated Data 
         const newSubject = {
@@ -239,7 +244,8 @@ const updateSubject = asyncPromiseHandler(async (req, res, next) => {
             subjectName,
             subjectCode,
             subjectShortForm,
-            subjectLectures
+            subjectLectures,
+            faculties: faculties.split(",")
         }
 
         // Finding the subject from the database, whether the subject exists or not

@@ -312,8 +312,15 @@ const updateStudent = asyncPromiseHandler(
 
             // Setting up the parameters
             msg = "Student Record Not Updated Successfully"
-
-            return res.status(500).json(new APIError(500, msg, error.message));
+            if (error.code === 11000) {
+                // Duplicate key error (e.g., unique index violation)
+                console.error('Duplicate key error:', error.message);
+                return res.status(409).json(new APIError(409, 'Record Already Exists !', error.message));
+            } else {
+                // Handle other errors
+                console.error('Error:', error.message);
+                return res.status(500).json(new APIError(500, 'Internal Server Error !', error.message));
+            }
         }
     }
 );

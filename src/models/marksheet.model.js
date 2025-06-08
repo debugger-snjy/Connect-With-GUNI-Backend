@@ -2,6 +2,11 @@ import mongoose from 'mongoose';
 
 // Defining the Schema for the Marksheet
 const MarksheetSchema = new mongoose.Schema({
+    marksheetId: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     marksheetSem: {
         type: String,
         required: true,

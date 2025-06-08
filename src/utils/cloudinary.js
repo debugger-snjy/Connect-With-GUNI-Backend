@@ -67,7 +67,7 @@ const uploadOnCloudinaryFromLocal = async (localFilePath, folder) => {
 
 
 // MARK: Function to delete the cloudinary file
-const deleteCloudinaryFile = async (fileUrl = "", type = "auto", folder = "Images") => {
+const deleteCloudinaryFile = async (fileUrl = "", type = "auto") => {
 
     try {
         if (!fileUrl) {
@@ -87,15 +87,16 @@ const deleteCloudinaryFile = async (fileUrl = "", type = "auto", folder = "Image
         }
 
         // Extracting the File URL to get the public ID from the URL
-        const extensionDotLoc = fileUrl.lastIndexOf(".");
-        const lastSlashLoc = fileUrl.lastIndexOf("/");
+        const folderIndex = fileUrl.lastIndexOf("Connect With GUNI");
+        fileUrl = fileUrl.replace(/%20/g, " ")
 
         // Public ID of the Image
-        const publicID = fileUrl.slice(lastSlashLoc + 1, extensionDotLoc)
-        console.log("[src/utils/cloudinary.js] Public ID : ", folder + "/" + publicID);
+        // const publicID = fileUrl.slice(lastSlashLoc + 1, extensionDotLoc)
+        const publicID = "Connect With GUNI/" + fileUrl.split("Connect With GUNI/")[1];
+        console.log("[src/utils/cloudinary.js] Public ID : ", publicID);
 
         // Destroying the File and waiting for the response
-        const deleteResponse = await cloudinary.uploader.destroy(folder + "/" + publicID, {
+        const deleteResponse = await cloudinary.uploader.destroy(publicID, {
             resource_type: type,
         }, function (error, result) {
             console.log("[src/utils/cloudinary.js] Error : ", error);

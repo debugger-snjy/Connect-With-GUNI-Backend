@@ -32,6 +32,6 @@ materialRouter.delete('/delete/:materialid', deleteMaterial);
 
 // For Fetching Subject Material Files - POST Request
 // Full Route : /api/v1/material/fetch/subject/:subjectname
-materialRouter.post('/fetch/subject/:subjectname', fetchSubjectMaterial);
+materialRouter.get('/fetch/subject/:subjectname', fetchSubjectMaterial);
 
 export default materialRouter;

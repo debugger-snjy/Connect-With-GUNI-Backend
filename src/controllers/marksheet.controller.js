@@ -3,6 +3,7 @@ import Marksheet from "../models/marksheet.model.js";
 import { APIError } from "../utils/apiError.js";
 import { APIResponse } from "../utils/apiResponse.js";
 import { MongoClient } from "mongodb";
+import { isValidObjectId } from "mongoose";
 
 // For Uploading Marksheet - POST Request
 // Full Route : /api/admin/upload/marksheet/
@@ -23,19 +24,21 @@ const uploadMarksheet = async (req, res) => {
         }
 
         // If no errors are present or found
-        const { title, sem, result, grade, data, enroll, date } = req.body;
+        const { id, title, sem, result, grade, data, enroll, date } = req.body;
 
         // Checking for the existing Record : 
         const searchedMarksheet = await Marksheet.find({
             $and: [
                 { "marksheetSem": sem },
                 { "marksheetEnroll": enroll },
+                { "marksheetId": id }
             ]
         })
 
         if (searchedMarksheet.length === 0) {
             // Create a newMarksheet Object with the new Updated Data 
             const newMarksheet = new Marksheet({
+                marksheetId: id,
                 marksheetEnroll: enroll,
                 marksheetSem: sem,
                 marksheetDate: date,
@@ -78,8 +81,19 @@ const fetchMarksheetById = async (req, res) => {
     let msg = "Marksheet has NOT Fetched Successfully";
 
     try {
-        // Finding all the Marksheets 
-        const marksheetData = await Marksheet.find({ _id: req.params.id });
+
+        let marksheetData;
+
+        if (isValidObjectId(req.params.id)) {
+            marksheetData = await Marksheet.findOne({
+                _id: req.params.id
+            });
+        }
+        else {
+            marksheetData = await Marksheet.findOne({
+                marksheetId: req.params.id
+            });
+        }
 
         if (marksheetData.length !== 0) {
             // Setting up the parameters
@@ -103,19 +117,9 @@ const fetchAllMarksheet = async (req, res) => {
     let msg = "All Marksheets has NOT Fetched Successfully";
 
     try {
-        const client = new MongoClient("mongodb://127.0.0.1:27017/ConnectWithGUNI", {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-
-        const databaseObject = client.db('ConnectWithGUNI');
-        const collection = databaseObject.collection("marksheets");
-
-        // Use the find method to retrieve all records
-        const cursor = collection.find();
 
         // Convert the cursor to an array of documents
-        const allMarksheet = await cursor.toArray();
+        const allMarksheet = await Marksheet.find({});
 
         if (allMarksheet.length !== 0) {
             // Setting up the parameters
@@ -206,14 +210,14 @@ const updateMarksheet = async (req, res) => {
         }
 
         // If no errors are present or found
-        const { sem, result, grade, data, enroll, date } = req.body;
+        const { id, sem, result, grade, data, enroll, date } = req.body;
 
         // Fetching Marksheet Data :
-        const marksheetData = await Marksheet.find({ _id: req.params.marksheetId })
+        const marksheetData = await Marksheet.find({ $and: [{ _id: req.params.marksheetId }, { marksheetId: id }] });
 
         console.log(marksheetData)
 
-        if (marksheetData) {
+        if (marksheetData.length !== 0) {
             console.log("Record Found")
 
             // Updating the Record : 
@@ -277,9 +281,16 @@ const deleteMarksheet = async (req, res) => {
             return res.status(400).json(new APIError(400, msg, errors.array()));
         }
 
-        const marksheetRecord = await Marksheet.findOneAndDelete({ _id: req.params.marksheetId })
+        let marksheetRecord;
 
-        if (marksheetRecord) {
+        if (isValidObjectId(req.params.marksheetId)) {
+            marksheetRecord = await Marksheet.findByIdAndDelete(req.params.marksheetId);
+        }
+        else {
+            marksheetRecord = await Marksheet.findOneAndDelete({ marksheetId: req.params.marksheetId });
+        }
+
+        if (marksheetRecord.length !== 0) {
             msg = "Marksheet has been Deleted Successfully";
         }
         else {

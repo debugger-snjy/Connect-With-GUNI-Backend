@@ -27,6 +27,10 @@ const FeesSchema = new mongoose.Schema({
     feesSem:{
         type: String,
         required: true,
+    },
+    feesEnroll: {
+        type: String,
+        required: true,
     }
 
 });

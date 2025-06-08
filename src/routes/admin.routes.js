@@ -22,7 +22,6 @@ adminRouter.post('/add', [
 
 ], addAdmin);
 
-
 // For Fetching All Admin - GET Request
 // Full Route : /api/v1/admin/fetch/all
 adminRouter.get('/fetch/all', fetchAllAdmin);

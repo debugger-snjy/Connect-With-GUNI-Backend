@@ -113,9 +113,11 @@ const deleteMaterial = async (req, res) => {
 
         const deletedMaterial = await Material.findByIdAndDelete(req.params.materialid);
 
+        console.log(deletedMaterial.sem, deletedMaterial.uploadedBy, deletedMaterial.file)
+
         // If the Material is deleted successfully, Deleting the Material from the Cloudinary
-        if (deleteMaterial) {
-            var result = await deleteCloudinaryFile(deletedMaterial.file, "raw", "Connect With GUNI/Materials/" + deleteMaterial.uploadedBy.toString().toUpperCase() + '/Sem ' + deleteMaterial.sem.toString());
+        if (deletedMaterial) {
+            var result = await deleteCloudinaryFile(deletedMaterial.file, "raw");
 
             if (!result) {
                 console.log("Error in Deleting the Material (" + deletedMaterial.file + ") from Cloudinary Server");
@@ -144,7 +146,7 @@ const fetchSubjectMaterial = async (req, res) => {
 
     try {
         // Finding all the Subjects
-        const allSubjectMaterial = await Material.find({ sem: req.body.sem, subject: req.params.subjectname });
+        const allSubjectMaterial = await Material.find({ subject: req.params.subjectname });
 
         if (allSubjectMaterial.length !== 0) {
             // Setting up the parameters

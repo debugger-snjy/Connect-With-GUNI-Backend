@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { body, validationResult } from "express-validator";
+import { body } from "express-validator";
 import {
     uploadTimetable,
     fetchTimetable,
@@ -23,7 +23,7 @@ timetableRouter.post('/upload', [
 
 // For Fetching Timetable - POST Request
 // Full Route : /api/v1/timetable/fetch
-timetableRouter.post('/fetch', [
+timetableRouter.get('/fetch', [
     // Checking whether the field is available or not !!
     body("sem", "Your Sem is Required").exists(),
     body("division", "Your Division is Required").exists(),

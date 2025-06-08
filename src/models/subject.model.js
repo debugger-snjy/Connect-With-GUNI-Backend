@@ -17,7 +17,7 @@ const SubjectSchema = new mongoose.Schema({
     subjectCode: {
         type: String,
         required: true,
-        unique : true,
+        unique: true,
     },
     subjectFacultyIds: {
         type: mongoose.Schema.Types.ObjectId,
@@ -26,7 +26,11 @@ const SubjectSchema = new mongoose.Schema({
     subjectLectures: {
         type: Number,
         default: 10,
-    }
+    },
+    faculties: [{
+        type: String,
+        required: true,
+    }],
 });
 
 // Exporting the model: 
