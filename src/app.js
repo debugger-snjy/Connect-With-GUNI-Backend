@@ -22,6 +22,7 @@ import recentAccessedRouter from "./routes/recentaccessed.routes.js";
 import timetableRouter from "./routes/timetable.routes.js";
 import materialRouter from "./routes/material.routes.js";
 import attendanceRouter from "./routes/attendance.routes.js";
+import axios from "axios";
 
 // Creating an Express application
 const app = express();
@@ -81,6 +82,28 @@ app.get("/api/v1/connect-with-guni", (req, res) => {
             }, "All Things are Looking Good !!")
         )
 });
+
+app.get('/api/v1/download', async (req, res) => {
+    const cloudinaryFileUrl = req.query.url; // full Cloudinary URL
+    const filename = req.query.name || 'downloaded-file.mp4';
+
+    console.log(filename)
+
+    try {
+        const fileResponse = await axios.get(cloudinaryFileUrl, {
+            responseType: 'stream',
+        });
+
+        res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+        res.setHeader('Content-Type', fileResponse.headers['content-type']);
+
+        fileResponse.data.pipe(res);
+    } catch (error) {
+        console.error('Download error:', error.message);
+        res.status(500).send('Error downloading the file');
+    }
+});
+
 
 // Exporting the app in default format - i.e, no need to use object destructuring while importing
 export default app;

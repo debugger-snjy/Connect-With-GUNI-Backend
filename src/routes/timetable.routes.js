@@ -23,7 +23,7 @@ timetableRouter.post('/upload', [
 
 // For Fetching Timetable - POST Request
 // Full Route : /api/v1/timetable/fetch
-timetableRouter.get('/fetch', [
+timetableRouter.post('/fetch', [
     // Checking whether the field is available or not !!
     body("sem", "Your Sem is Required").exists(),
     body("division", "Your Division is Required").exists(),
